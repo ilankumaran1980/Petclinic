@@ -2,12 +2,12 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven3'   // Must match Jenkins Maven configuration
-        jdk 'JDK11'      // Or JDK21 if you want to use Java 21
+        maven 'Maven3'   // Must match Maven name in Jenkins
+        jdk 'JDK11'      // Must match JDK name in Jenkins
     }
 
     environment {
-        PATH = "/opt/maven/bin:${env.PATH}"  // Ensure pipeline can find mvn
+        PATH = "/opt/maven/bin:${env.PATH}"  // Ensure mvn command works
         TOMCAT_HOME = "/usr/share/tomcat9"
         APP_NAME = "petclinic"
     }
@@ -36,11 +36,7 @@ pipeline {
     }
 
     post {
-        success {
-            echo 'Deployment completed successfully!'
-        }
-        failure {
-            echo 'Deployment failed. Check logs!'
-        }
+        success { echo 'Deployment completed successfully!' }
+        failure { echo 'Deployment failed. Check logs!' }
     }
 }
