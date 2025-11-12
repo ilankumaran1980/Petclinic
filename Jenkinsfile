@@ -24,6 +24,13 @@ pipeline {
                 }
             }
         }
+        stage('Make Maven Wrapper Executable') {
+    steps {
+        dir('spring-petclinic') {
+            sh 'chmod +x mvnw'
+        }
+    }
+}
 
         stage('Deploy to Tomcat') {
             steps {
