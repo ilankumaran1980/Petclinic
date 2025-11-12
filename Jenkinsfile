@@ -1,20 +1,11 @@
 pipeline {
     agent any
 
-    tools {
-        maven 'Maven3'
-        jdk 'JDK11'
-    }
-
-    stage('Checkout') {
-    steps {
-        git branch: 'main', url: 'https://github.com/ilankumaran1980/Petclinic.git'
-    }
-}
-
+    stages {
 
         stage('Build') {
             steps {
+                echo 'Building Spring Petclinic...'
                 // Navigate into spring-petclinic folder to build
                 dir('spring-petclinic') {
                     sh 'mvn clean package -DskipTests'
