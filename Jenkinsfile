@@ -6,13 +6,12 @@ pipeline {
         jdk 'JDK11'
     }
 
-    stages {
-        stage('Checkout') {
-            steps {
-                // Checkout your GitHub repository
-                git 'https://github.com/ilankumaran1980/Petclinic.git'
-            }
-        }
+    stage('Checkout') {
+    steps {
+        git branch: 'main', url: 'https://github.com/ilankumaran1980/Petclinic.git'
+    }
+}
+
 
         stage('Build') {
             steps {
